@@ -3,7 +3,7 @@ import sys
 import openai
 import speech_recognition as sr
 r = sr.Recognizer()
-#audio = ''
+audio = ''
 
 def voice_to_text():
     audio = get_audio_from_mic()
@@ -26,8 +26,6 @@ def get_audio_from_mic():
             # "ストップ" と言ったら音声認識を止める
             # if r.recognize_google(audio, language='ja-JP') == "ストップ" :
             #     print("end")
-            #     break
-
         # 以下は認識できなかったときに止まらないように。
         except sr.UnknownValueError:
             print("could not understand audio")
@@ -36,5 +34,4 @@ def get_audio_from_mic():
         except KeyboardInterrupt:
             print("強制終了します…")
             sys.exit
-    
     return audio
