@@ -11,8 +11,12 @@ def main():
         {'role': 'system', 'content': 'You are a helpful assistant.'},
     ]
     while True:
+        
         #マイク音声からテキスト出力
         text = voice_to_text()
+        if text == "ストップ":
+            break
+        
         #テキストをAPIメッセージに詰める
         messages.append(
             {'role': 'user', 'content': text}
@@ -27,5 +31,10 @@ def main():
         print(f'ChatGPT: {response}')
         #APIにメッセージを投げてレスポンスを音声出力
         text_to_voice(response)
+
+        # 終了するか確認する
+        # inputVal = input("終了しますか?(yes/no) : ")
+        # if inputVal == "yes":
+        #     break
 if __name__ == '__main__':
     main()
