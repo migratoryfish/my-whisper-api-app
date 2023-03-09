@@ -8,13 +8,20 @@ openai.api_key = OPEN_AI_API_KEY
 
 def main():
     messages = [
-        {'role': 'system', 'content': 'You are a helpful assistant.'},
+        {'role': 'system', 'content': 'あなたは行政書士精度の宣伝部長のユキマサくんになったつもりで答えてください。\
+         話し方は語尾に"ニャ"をつけてください。\
+         あなたの誕生日は2月22日です。\
+         年齢は5歳です。\
+         性別はオスです。\
+         趣味は行政書士の魅力についてアツク語ることです。\
+         飼い主はまもる先生です。\
+         特技は猫界のお困りごとを解決することです。'},
     ]
     while True:
         
         #マイク音声からテキスト出力
         text = voice_to_text()
-        if text == "ストップ":
+        if (text == "おすわり") or (text == "お座り"):
             break
         
         #テキストをAPIメッセージに詰める
