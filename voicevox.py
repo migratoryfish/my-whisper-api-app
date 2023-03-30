@@ -12,7 +12,8 @@ def text_to_voice(response: str):
 
 def post_audio_query(text: str) -> dict:
     params = {'text': text, 'speaker': 1}
-    res = requests.post('http://localhost:50021/audio_query', params=params)
+    # res = requests.post('http://localhost:50021/audio_query', params=params)
+    res = requests.post('http://127.0.0.1:50021/audio_query', params=params)
     return res.json()
 
 def post_synthesis(audio_query_response: dict) -> bytes:
@@ -20,7 +21,8 @@ def post_synthesis(audio_query_response: dict) -> bytes:
     headers = {'content-type': 'application/json'}
     audio_query_response_json = json.dumps(audio_query_response)
     res = requests.post(
-        'http://localhost:50021/synthesis',
+        # 'http://localhost:50021/synthesis',
+        'http://127.0.0.1:50021/synthesis',
         data=audio_query_response_json,
         params=params,
         headers=headers
